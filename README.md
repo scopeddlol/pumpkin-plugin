@@ -4,7 +4,10 @@ An all-in-one **essentials suite** for [Pumpkin](https://pumpkinmc.org) servers:
 **PermissionsEx-style permission system**, an **economy** with a **player market GUI**, and
 **chat formatting** — one WebAssembly plugin, no dependencies.
 
-Built against `pumpkin-plugin-api 0.2.0+26.3-26.51`.
+Built against the Pumpkin plugin API at commit `4426d11` (server `0.2.0+26.3-26.51`) and verified to load
+on a server built from that commit. `Cargo.toml` pins the API by git `rev` because the crates.io release of
+`pumpkin-plugin-api` is older than that server and is rejected at load time. If you run a different
+Pumpkin build, change `rev` to your server's commit.
 
 ## Install
 
@@ -20,7 +23,9 @@ cargo build --release --target wasm32-wasip2
 cp target/wasm32-wasip2/release/pumpkin_essentials.wasm /path/to/server/plugins/
 ```
 
-Restart the server. Config and data appear in `plugins/data/essentials/`:
+Restart the server. On first load Pumpkin asks you to approve the plugin's `fs.write.data` permission
+(it stores its data in its own folder). To skip the prompt, add `allowed_permissions = ["fs.write.data"]`
+under `[plugins]` in `config/features.toml` / `pumpkin.toml`. Config and data appear in `plugins/data/essentials/`:
 
 | File               | What                                                        |
 | ------------------ | ----------------------------------------------------------- |
