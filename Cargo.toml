@@ -9,7 +9,7 @@ license = "MIT"
 crate-type = ["cdylib"]
 
 [dependencies]
-pumpkin-plugin-api = "=0.2.0"
+pumpkin-plugin-api = { git = "https://github.com/Pumpkin-MC/Pumpkin", rev = "4426d111" }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 tracing = "0.1"
